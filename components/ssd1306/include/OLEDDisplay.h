@@ -348,4 +348,4 @@ void OLEDDisplay_drawInternal(OLEDDisplay_t *oled, int16_t xMove, int16_t yMove,
 void OLEDDisplay_drawStringInternal(OLEDDisplay_t *oled, int16_t xMove, int16_t yMove, char *text, uint16_t textLength, uint16_t textWidth);
 void OLEDDisplay_display(OLEDDisplay_t *oled);
 
-void Ssd1306setup(void);
+void gameSetup(void);

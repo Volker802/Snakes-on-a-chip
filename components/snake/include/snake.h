@@ -2,10 +2,8 @@
 #define SNAKE_H
 
 #pragma once
-
 #include <stdint.h>
 #include "food.h"
-#include "OLEDDisplay.h"
 
 typedef struct
 {

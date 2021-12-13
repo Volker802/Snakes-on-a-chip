@@ -1,11 +1,30 @@
 
 #include "snake.h"
-#include "food.h"
 
 #define SNAKE_START_LENGTH 30
 #define HEAD 0
 
 static snake_t snake = {0};
+
+static const vector_t right = {
+    .x = 1,
+    .y = 0,
+};
+
+static const vector_t left = {
+    .x = -1,
+    .y = 0,
+};
+
+static const vector_t up = {
+    .x = 0,
+    .y = -1,
+};
+
+static const vector_t down = {
+    .x = 0,
+    .y = 1,
+};
 
 snake_t *snake_init(void)
 {
