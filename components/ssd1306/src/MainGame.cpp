@@ -74,7 +74,7 @@ void display_food(food_t *food)
     OLEDDisplay_setPixel(oled, food->x, food->y);
 }
 
-void snake_direction(void)
+void snake_direction(void) //better way to inmplement this.
 {
     if ((pitch > 0) && (roll > 0))
     {
@@ -240,35 +240,10 @@ static void i2c_test_task(void *arg)
         }
         vTaskDelayUntil(&lastWakeTime, loopPeriod);
     }
-
-    // while (1)
-    // {
-    //     if (snake->alive)
-    //     {
-    //         OLEDDisplay_resetDisplay(oled);
-    //         OLEDDisplay_drawRect(oled, 0, 0, 128, 64);
-    //         //display_score(score);
-    //         display_snake(snake);
-    //         display_food(food);
-    //         OLEDDisplay_display(oled);
-    //         snake_direction();
-    //         snake_move();
-    //         if (snake_ate_food(food))
-    //         {
-    //             score++;
-    //             food_generate_new(snake);
-    //         }
-    //         vTaskDelay(pdMS_TO_TICKS(5000));
-    //     }
-    //     else
-    //     {
-    //         display_game_over();
-    //     }
-    // }
     vTaskDelete(NULL);
 }
 
-void Ssd1306setup(void)
+void gameSetup(void)
 {
     oled = OLEDDisplay_init(I2C_MASTER_NUM, 0x78, I2C_MASTER_SDA_IO, I2C_MASTER_SCL_IO);
     //print_mux = xSemaphoreCreateMutex();

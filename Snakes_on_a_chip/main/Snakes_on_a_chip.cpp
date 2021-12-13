@@ -2,5 +2,5 @@
 
 extern "C" void app_main()
 {
-    Ssd1306setup();
+    gameSetup();
 }
