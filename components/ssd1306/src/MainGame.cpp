@@ -32,7 +32,6 @@ bool negpitch, negroll, pospitch, posroll;
 OLEDDisplay_t *oled;
 
 MPU6050 *mpu;
-SemaphoreHandle_t print_mux = NULL;
 
 static const vector_t right = {
     .x = 1,
@@ -74,7 +73,7 @@ void display_food(food_t *food)
     OLEDDisplay_setPixel(oled, food->x, food->y);
 }
 
-void snake_direction(void) //better way to inmplement this.
+void snake_direction(void) //better way to implement this.
 {
     if ((pitch > 0) && (roll > 0))
     {
@@ -182,11 +181,6 @@ static void i2c_test_task(void *arg)
 
     float ax, ay, az, gx, gy, gz;
 
-    float fpitch, froll;
-
-    KALMAN pfilter(0.005);
-    KALMAN rfilter(0.005);
-
     for (;;)
     {
         OLEDDisplay_clear(oled);
@@ -196,8 +190,8 @@ static void i2c_test_task(void *arg)
         gx = mpu.getGyroX();
         gy = mpu.getGyroY();
         gz = mpu.getGyroZ();
-        pitch = atan(ax / az) * 57.2958;
-        roll = atan(ay / az) * 57.2958;
+        pitch = (atan(ax / az) * 57.2958);
+        roll = (atan(ay / az) * 57.2958);
         ESP_LOGI("mpu6050", "Gyro: ( %.3f, %.3f, %.3f)", gx, gy, gz);
         ESP_LOGI("mpu6050", "Pitch: %.3f", pitch);
         ESP_LOGI("mpu6050", "Roll: %.3f", roll);
@@ -226,7 +220,6 @@ static void i2c_test_task(void *arg)
                 pospitch = true;
             }
             checkDirChange();
-            //snake_direction();
             snake_move();
             if (snake_ate_food(food))
             {
@@ -246,7 +239,6 @@ static void i2c_test_task(void *arg)
 void gameSetup(void)
 {
     oled = OLEDDisplay_init(I2C_MASTER_NUM, 0x78, I2C_MASTER_SDA_IO, I2C_MASTER_SCL_IO);
-    //print_mux = xSemaphoreCreateMutex();
     ESP_LOGI(TAG, "Running");
-    xTaskCreate(i2c_test_task, "i2c_test_task_0", 8192, (void *)0, 10, NULL);
+    xTaskCreate(i2c_test_task, "i2c_test_task_0", 16384, (void *)0, 10, NULL);
 }
