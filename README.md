@@ -1,6 +1,6 @@
 # Snakes-on-a-chip
 
-Snake Gmae on ESP32-Wemos-Lolin32 (With inbuilt SSD1306 OLED module). Uses MPU6050 to control direction of snake.
+Snake Game on ESP32-Wemos-Lolin32 (With inbuilt SSD1306 OLED module). Uses MPU6050 to control direction of snake.
 Places where I acquired different libraries:
 
 SSD1306 library: https://github.com/ThingPulse/esp8266-oled-ssd1306.
