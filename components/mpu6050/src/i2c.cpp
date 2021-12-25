@@ -8,7 +8,7 @@ I2C::I2C(gpio_num_t scl, gpio_num_t sda, i2c_port_t port)
     conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
     conf.scl_io_num = scl;
     conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
-    conf.master.clk_speed = 1000000;
+    conf.master.clk_speed = 700000;
     conf.clk_flags = 0;
     i2c_param_config(port, &conf);
     i2c_driver_install(port, conf.mode, 0, 0, 0);

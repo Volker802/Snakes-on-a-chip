@@ -141,7 +141,7 @@ OLEDDisplay_t *OLEDDisplay_init(int port, int addr, int sda, int scl)
   conf.sda_pullup_en = GPIO_PULLUP_ENABLE;
   conf.scl_io_num = scl; // I2C_MASTER_SCL_IO;
   conf.scl_pullup_en = GPIO_PULLUP_ENABLE;
-  conf.master.clk_speed = 1000000; //I2C_MASTER_FREQ_HZ;
+  conf.master.clk_speed = 700000; //I2C_MASTER_FREQ_HZ;
   conf.clk_flags = 0;
   i2c_param_config(i2c_master_port, &conf);
   //ESP_ERROR_CHECK(i2c_driver_install(i2c_master_port, conf.mode, I2C_MASTER_RX_BUF_DISABLE, I2C_MASTER_TX_BUF_DISABLE, 0));
